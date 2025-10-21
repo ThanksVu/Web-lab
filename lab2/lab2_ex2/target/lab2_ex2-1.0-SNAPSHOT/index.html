@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>3-column fixed layout (Flexbox)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* Reset & page bg */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{background:#facd8a;}
+    h2{padding:1em;font-size:18px;font-family:system-ui,Segoe UI,Arial,sans-serif}
+    /* Page container (fixed width, centered) */
+    .page{
+      width: 960px;                  
+      margin: 16px auto;
+      background:#fff;
+      border:1px solid #000;
+    }
+    /* Header & Footer */
+    header{border-bottom:2px solid #ef9c00;}
+    footer{border-top:2px solid #ef9c00;}
+    /* Content row (Flexbox) */
+    .content{
+      display:flex;
+      border-bottom:2px solid #ef9c00; 
+      min-height: 350px;              
+    }
+    /* Columns */
+    .sidebar{
+      width: 180px;                    
+      flex: 0 0 180px;
+    }
+    main{
+      flex: 1 1 auto;                  
+    }
+    /* Vertical separators*/
+    main{ border-left:2px solid #ef9c00; }
+    .sidebar.right{ border-left:2px solid #ef9c00; }
+    .sidebar h2, main h2{ margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header><h2>Header</h2></header>
+
+    <div class="content">
+      <aside class="sidebar left"><h2>Sidebar A</h2></aside>
+      <main><h2>Main content</h2></main>
+      <aside class="sidebar right"><h2>Sidebar B</h2></aside>
+    </div>
+
+    <footer><h2>Footer</h2></footer>
+  </div>
+</body>
+</html>

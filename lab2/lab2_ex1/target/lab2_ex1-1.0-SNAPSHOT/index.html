@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="images/logo_IU.png" type="image/png">
+<title>Survey</title>
+<style>
+  :root{
+    --teal:#0596a6;
+    --text:#2b2b2b;
+    --muted:#6b7280;
+    --border:#cfd8e3;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color:var(--text);
+    background:#f7fafc;
+    margin:0; padding:24px;
+  }
+  .card{
+    max-width:760px;
+    margin:auto;
+    background:#fff;
+    border:2px solid #9fb7d6;
+    border-radius:10px;
+    padding:28px 28px 32px;
+    box-shadow:0 6px 18px rgba(0,0,0,.04);
+  }
+
+  /* Header*/
+  .header{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
+  .logo{
+    width:120px; 
+    height:120px;
+    object-fit:contain;   
+    display:block;
+  }
+
+  h1{ color:var(--teal); font-size:34px; margin:8px 0 6px }
+  .sub{ color:var(--muted); margin:0 0 24px; }
+
+  /* Section headings */
+  h2{
+    color:var(--teal); margin:22px 0 10px; font-size:22px
+  }
+
+  /* Form layout */
+  form{ display:flex; flex-direction:column; gap:18px }
+  .grid{
+    display:grid;
+    grid-template-columns: 180px 1fr;
+    gap:12px 16px;
+    align-items:center;
+    max-width:540px;
+  }
+  label{ font-weight:600 }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  select{
+    width:100%;
+    border:1.5px solid var(--border);
+    padding:10px 12px;
+    border-radius:0;             
+    font-size:15px;    
+    appearance: none;
+  }
+
+  .help{ color:var(--muted); font-size:14px }
+
+  fieldset{ border:none; padding:0; margin:0; }
+  .options{ display:flex; flex-wrap:wrap; gap:16px; margin-top:6px; }
+  .checklist{ display:flex; flex-direction:column; gap:10px; margin-top:6px }
+  .select-inline { width: auto; }
+
+  /* Submit */
+  .actions{ margin-top:8px }
+  button{
+    appearance:none; border:none; cursor:pointer;
+    background:var(--teal); color:#fff; font-weight:700;
+    padding:10px 16px; border-radius:6px; font-size:15px;
+  }
+  button:hover{ filter:brightness(0.95) }
+</style>
+</head>
+<body>
+  <div class="card" role="region" aria-labelledby="survey-title">
+    <div class="header">
+      <img src="images/logo_IU.png" alt="University logo" class="logo">
+      <div>
+        <h1 id="survey-title">Survey</h1>
+        <p class="sub">If you have a moment, we'd appreciate it if you would fill out this survey.</p>
+      </div>
+    </div>
+
+    <form action="#" method="post" novalidate>
+      <h2>Your information:</h2>
+      <div class="grid">
+        <label for="firstName">First Name</label>
+        <input id="firstName" name="firstName" type="text" autocomplete="given-name" required />
+
+        <label for="lastName">Last Name</label>
+        <input id="lastName" name="lastName" type="text" autocomplete="family-name" required />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required />
+
+        <label for="dob">Date of Birth</label>
+        <input id="dob" name="dob" type="date" />
+      </div>
+
+      <fieldset>
+        <h2>How did you hear about us?</h2>
+        <div class="options" role="radiogroup" aria-label="How did you hear about us?">
+          <label><input type="radio" name="referrer" value="search" required /> Search engine</label>
+          <label><input type="radio" name="referrer" value="word-of-mouth" /> Word of mouth</label>
+          <label><input type="radio" name="referrer" value="social" /> Social Media</label>
+          <label><input type="radio" name="referrer" value="other" /> Other</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <h2>Would you like to receive announcements about new CDs and special offers?</h2>
+        <div class="checklist">
+          <label><input type="checkbox" name="likeGeneral" /> YES, I'd like that.</label>
+          <label><input type="checkbox" name="likeEmail" /> YES, please send me email announcements.</label>
+        </div>
+      </fieldset>
+
+      <div class="grid">
+        <label for="contactBy" class="help">Please contact me by:</label>
+        <select id="contactBy" name="contactBy" class="select-inline">
+          <option value="both">Email or postal mail</option>
+          <option value="email">Email only</option>
+          <option value="postal">Postal mail only</option>
+        </select>
+      </div>
+
+      <div class="actions">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
