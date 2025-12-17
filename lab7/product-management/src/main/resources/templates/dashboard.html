@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            color: black;
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .statistics {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            width: 23%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-card p {
+            font-size: 1.2rem;
+            color: #667eea;
+        }
+
+        .low-stock {
+            background-color: #f8d7da;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Product Statistics Dashboard</h1>
+
+        <!-- Total Product Count -->
+        <div class="statistics">
+            <div class="stat-card">
+                <h3>Total Products</h3>
+                <p th:text="${totalProducts}">0</p>
+            </div>
+
+            <!-- Total Inventory Value -->
+            <div class="stat-card">
+                <h3>Total Value</h3>
+                <p th:text="'$' + ${totalValue}">0</p>
+            </div>
+
+            <!-- Average Price -->
+            <div class="stat-card">
+                <h3>Average Price</h3>
+                <p th:text="'$' + ${avgPrice}">0</p>
+            </div>
+        </div>
+
+        <!-- Low Stock Alerts -->
+        <div th:if="${lowStockProducts != null and !lowStockProducts.isEmpty()}" class="low-stock">
+            <h3>Low Stock Alerts</h3>
+            <ul>
+                <li th:each="product : ${lowStockProducts}">
+                    <p th:text="'Product: ' + ${product.name} + ' | Quantity: ' + ${product.quantity}"></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
